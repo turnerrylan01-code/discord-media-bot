@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: media-bot
+    env: node
+    buildCommand: npm install
+    startCommand: npm run prod
+    envVars:
+      - key: DISCORD_TOKEN
+        fromService:
+          name: media-bot
+          type: secret
+      - key: CLIENT_ID
+        fromService:
+          name: media-bot
+          type: secret
+      - key: MEDIA_ROLE_ID
+        fromService:
+          name: media-bot
+          type: secret

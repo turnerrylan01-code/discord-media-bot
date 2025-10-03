@@ -1,0 +1,20 @@
+{
+  "name": "discord-media-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot to manage media access",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "deploy": "node deploy-commands.js",
+    "prod": "pm2 start bot.js --name media-bot --time --restart-delay=5000 --max-memory-restart 300M"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "pm2": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=16.9.0"
+  }
+}
