@@ -2,18 +2,24 @@ require('dotenv').config();
 const { Client, GatewayIntentBits, REST, Routes, PermissionFlagsBits } = require('discord.js');
 const keyManager = require('./keyManager');
 
-// Configuration - Replace these with your values
+// Configuration - Load from environment variables
 const CONFIG = {
-    TOKEN: process.env.DISCORD_TOKEN || 'cess.env.DISCORD_TOKEN',
-    CLIENT_ID: process.env.CLIENT_ID || '1423474049098580039',
-    MEDIA_ROLE_ID: process.env.MEDIA_ROLE_ID || '1403267204354539531' // Get this from your server
+    TOKEN: process.env.DISCORD_TOKEN,
+    CLIENT_ID: process.env.CLIENT_ID,
+    MEDIA_ROLE_ID: process.env.MEDIA_ROLE_ID
 };
 
 // Validate config
-if (!CONFIG.TOKEN || CONFIG.TOKEN === 'YOUR_BOT_TOKEN') {
-    console.error('❌ Please set your Discord bot token in the .env file');
+const requiredVars = ['TOKEN', 'CLIENT_ID', 'MEDIA_ROLE_ID'];
+const missingVars = requiredVars.filter(varName => !CONFIG[varName]);
+
+if (missingVars.length > 0) {
+    console.error('❌ Missing required environment variables:', missingVars.join(', '));
+    console.error('💡 Please set these in your Render environment variables');
     process.exit(1);
 }
+
+console.log('✅ All required environment variables are set');
 
 // Use minimal required intents
 const client = new Client({ 

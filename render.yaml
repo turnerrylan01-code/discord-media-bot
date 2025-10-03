@@ -3,7 +3,7 @@ services:
     name: media-bot
     env: node
     buildCommand: npm install
-    startCommand: npm run prod
+    startCommand: node bot.js
     envVars:
       - key: DISCORD_TOKEN
         fromService:

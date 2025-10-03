@@ -7,7 +7,8 @@
     "start": "node bot.js",
     "dev": "nodemon bot.js",
     "deploy": "node deploy-commands.js",
-    "prod": "pm2 start bot.js --name media-bot --time --restart-delay=5000 --max-memory-restart 300M"
+    "prod": "node bot.js",
+    "render-start": "node bot.js"
   },
   "dependencies": {
     "discord.js": "^14.14.1",
